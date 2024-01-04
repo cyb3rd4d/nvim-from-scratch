@@ -8,6 +8,17 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function()
+      require("neo-tree").setup({
+        window = {
+          mappings = {
+            ["s"] = "noop",
+            ["S"] = "noop",
+            ["<C-s>"] = "open_split",
+            ["<C-v>"] = "open_vsplit",
+          },
+        },
+      })
+
       vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>", {})
     end,
   },
