@@ -18,8 +18,6 @@ return {
           },
         },
       })
-
-      vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal_force_cwd<CR>", {})
     end,
   },
 }
