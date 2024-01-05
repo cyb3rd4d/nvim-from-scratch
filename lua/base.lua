@@ -1,19 +1,25 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.smartindent = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+local opt = vim.opt
+local keymap = vim.keymap
+
 vim.g.mapleader = " "
 
-vim.keymap.set("i", "<C-h>", "<Left>", {})
-vim.keymap.set("i", "<C-j>", "<Down>", {})
-vim.keymap.set("i", "<C-k>", "<Up>", {})
-vim.keymap.set("i", "<C-l>", "<Right>", {})
+opt.number = true
+opt.relativenumber = true
+opt.expandtab = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.smartindent = true
+opt.splitbelow = true
+opt.splitright = true
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", {})
-vim.keymap.set("n", "<C-j>", "<C-w>j", {})
-vim.keymap.set("n", "<C-k>", "<C-w>k", {})
-vim.keymap.set("n", "<C-l>", "<C-w>l", {})
+-- Window navigation in insert mode
+keymap.set("i", "<C-h>", "<Left>", {})
+keymap.set("i", "<C-j>", "<Down>", {})
+keymap.set("i", "<C-k>", "<Up>", {})
+keymap.set("i", "<C-l>", "<Right>", {})
+
+-- Window navigation in normal mode
+keymap.set("n", "<C-h>", "<C-w>h", {})
+keymap.set("n", "<C-j>", "<C-w>j", {})
+keymap.set("n", "<C-k>", "<C-w>k", {})
+keymap.set("n", "<C-l>", "<C-w>l", {})
