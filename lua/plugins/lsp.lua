@@ -1,50 +1,60 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    config = true,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {},
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "gopls", "lua_ls", "bashls", "tsserver" },
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "folke/neodev.nvim",   opts = {} },
-    },
-    config = function()
-      require("neodev").setup()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
+	{
+		"williamboman/mason.nvim",
+		config = true,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {},
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "gopls", "lua_ls", "bashls", "tsserver" },
+			})
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "folke/neodev.nvim", opts = {} },
+		},
+		config = function()
+			require("neodev").setup()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local lspconfig = require("lspconfig")
+			local lsp = vim.lsp
 
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
+			local handlers = {
+				["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" }),
+				["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" }),
+			}
 
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
+			lspconfig.lua_ls.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+					},
+				},
+			})
 
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-      })
+			lspconfig.gopls.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+			})
 
-      lspconfig.tsserver.setup({
-        capabilities = capabilities,
-      })
-    end,
-  },
+			lspconfig.bashls.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+			})
+
+			lspconfig.tsserver.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+			})
+		end,
+	},
 }
