@@ -8,8 +8,8 @@ return {
     },
     config = function()
       local neogit = require("neogit")
-      neogit.setup()
-      vim.keymap.set("n", "<leader>s", function()
+      neogit.setup({})
+      vim.keymap.set("n", "<leader>gs", function()
         neogit.open({ kind = "split" })
       end, {})
     end,
@@ -17,5 +17,5 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     config = true,
-  }
+  },
 }
