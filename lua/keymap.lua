@@ -17,6 +17,7 @@ wk.register({
 })
 
 local telescope_builtin = require("telescope.builtin")
+local dap = require("dap")
 
 wk.register({
 	-- Neogit
@@ -61,7 +62,38 @@ wk.register({
 		-- Treesitter
 		tree = { telescope_builtin.treesitter, "Find Treesitter object" },
 	},
+	-- Debugger
+	db = { dap.toggle_breakpoint, "Toogle debug breakpoint" },
+	dl = { dap.run_last, "Run last debug session" },
 }, { prefix = "<leader>" })
+
+local dap_ui_widgets = require("dap.ui.widgets")
+
+-- Debugger
+wk.register({
+	["<F5>"] = { dap.continue, "Start debugging" },
+	["<F6>"] = { dap.terminate, "Stop debugging" },
+	["<F9>"] = { dap.step_back, "Step back" },
+	["<F10>"] = { dap.step_over, "Step over" },
+	["<F11>"] = { dap.step_into, "Step into" },
+	["<F12>"] = { dap.step_out, "Step out" },
+	["<leader>dh"] = { dap_ui_widgets.hover, "Evaluate in a floating window" },
+	["<leader>dp"] = { dap_ui_widgets.preview, "Evaluate in a buffer" },
+	["<leader>df"] = {
+		function()
+			dap_ui_widgets.centered_float(dap_ui_widgets.frames)
+		end,
+		"View the current frames in a centered floating window",
+	},
+	["<leader>ds"] = {
+		function()
+			dap_ui_widgets.centered_float(dap_ui_widgets.scopes)
+		end,
+		"View the current scopes in a centered floating window",
+	},
+}, {
+	mode = { "n", "v" },
+})
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -79,7 +111,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			gd = { lsp.buf.definition, "Go to definition" },
 			K = { lsp.buf.hover, "Show documentation" },
 			gi = { lsp.buf.implementation, "Go to implementation" },
-			["<C-k>"] = { lsp.buf.signature_help, "Show signature" },
+			["<leader>k"] = { lsp.buf.signature_help, "Show signature" },
 			["<leader>wa"] = { lsp.buf.add_workspace_folder, "Add folder to workspace" },
 			["<leader>wr"] = { lsp.buf.remove_workspace_folder, "Remove folder to workspace" },
 			["<leader>wl"] = {

@@ -6,6 +6,7 @@ return {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-ui-select.nvim", config = true },
+			{ "nvim-telescope/telescope-dap.nvim" },
 			{ "rcarriga/nvim-notify" },
 		},
 		config = function()
@@ -13,6 +14,7 @@ return {
 			telescope.setup({})
 			telescope.load_extension("ui-select")
 			telescope.load_extension("notify")
+			telescope.load_extension("dap")
 		end,
 	},
 }
