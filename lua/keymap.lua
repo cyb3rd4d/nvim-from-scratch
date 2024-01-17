@@ -155,7 +155,6 @@ wk.register({
 })
 
 wk.register({
-	["<esc>"] = { "<C-\\><C-n>", "Leave the terminal mode" },
 	["<A-v>"] = { "<C-\\><C-n><cmd>ToggleTerm direction=vertical<cr>", "Toggle vertical terminal" },
 	["<A-h>"] = { "<C-\\><C-n><cmd>ToggleTerm direction=horizontal<cr>", "Toggle horizontal terminal" },
 	["<C-h>"] = { "<C-\\><C-n><C-w>h", "While in terminal mode, move to the left window" },
