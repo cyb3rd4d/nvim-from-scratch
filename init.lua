@@ -21,3 +21,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 require("keymap")
+
+local filetype_mapping = require("filetypes")
+
+for filetype, patterns in pairs(filetype_mapping) do
+	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+		pattern = patterns,
+		callback = function()
+			vim.opt.filetype = filetype
+		end,
+	})
+end
