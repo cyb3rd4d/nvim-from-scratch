@@ -33,10 +33,7 @@ wk.register({
 		cb = { telescope_builtin.current_buffer_fuzzy_find, "Search in the current buffer" },
 
 		-- LSP pickers
-		lr = { telescope_builtin.lsp_references, "Find LSP references" },
-		li = { telescope_builtin.lsp_implementations, "Find LSP implementations" },
 		ld = { telescope_builtin.lsp_definitions, "Find LSP definitions" },
-		ltd = { telescope_builtin.lsp_type_definitions, "Find LSP type definitions" },
 
 		-- Vim pickers
 		b = { telescope_builtin.buffers, "Find buffer" },
@@ -105,7 +102,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			gD = { lsp.buf.declaration, "Go to declaration" },
 			gd = { lsp.buf.definition, "Go to definition" },
 			K = { lsp.buf.hover, "Show documentation" },
-			gi = { lsp.buf.implementation, "Go to implementation" },
+			gi = { telescope_builtin.lsp_implementations, "Find implementations" },
 			["<leader>k"] = { lsp.buf.signature_help, "Show signature" },
 			["<leader>wa"] = { lsp.buf.add_workspace_folder, "Add folder to workspace" },
 			["<leader>wr"] = { lsp.buf.remove_workspace_folder, "Remove folder to workspace" },
@@ -117,7 +114,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			},
 			["<leader>D"] = { lsp.buf.type_definition, "Type definition" },
 			["<leader>rn"] = { lsp.buf.rename, "Rename symbol" },
-			gr = { lsp.buf.references, "List all references of the symbol under the cursor" },
+			gr = { telescope_builtin.lsp_references, "List all references of the symbol under the cursor" },
 			["<leader>cf"] = {
 				function()
 					lsp.buf.format({ async = false })
