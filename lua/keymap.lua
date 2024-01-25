@@ -5,6 +5,9 @@ wk.register({
 	["<C-l>"] = { "<C-w>l", "Go to the right window" },
 	["<C-j>"] = { "<C-w>j", "Go to the top window" },
 	["<C-k>"] = { "<C-w>k", "Go to the bottom window" },
+	["<C-x>"] = { "<cmd>bdelete<cr>", "Close the current buffer" },
+}, {
+	mode = "n",
 })
 
 wk.register({
@@ -48,8 +51,8 @@ wk.register({
 		gc = { telescope_builtin.git_commits, "Find commits" },
 		gbc = { telescope_builtin.git_bcommits, "Find commits for current buffer" },
 		gbr = { telescope_builtin.git_branches, "Find git branch" },
-		gst = { telescope_builtin.git_status, "Find git status" },
-		gsta = { telescope_builtin.git_stash, "Find git stash" },
+		gs = { telescope_builtin.git_status, "Find git status" },
+		ga = { telescope_builtin.git_stash, "Find git stash" },
 
 		-- Treesitter
 		tree = { telescope_builtin.treesitter, "Find Treesitter object" },
