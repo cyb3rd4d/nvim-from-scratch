@@ -158,6 +158,7 @@ wk.register({
 wk.register({
 	["<A-v>"] = { "<C-\\><C-n><cmd>ToggleTerm direction=vertical<cr>", "Toggle vertical terminal" },
 	["<A-h>"] = { "<C-\\><C-n><cmd>ToggleTerm direction=horizontal<cr>", "Toggle horizontal terminal" },
+	["<A-f>"] = { "<C-\\><C-n><cmd>ToggleTerm direction=float<cr>", "Toggle floating terminal" },
 	["<C-h>"] = { "<C-\\><C-n><C-w>h", "While in terminal mode, move to the left window" },
 	["<C-l>"] = { "<C-\\><C-n><C-w>l", "While in terminal mode, move to the right window" },
 	["<C-j>"] = { "<C-\\><C-n><C-w>j", "While in terminal mode, move to the top window" },
