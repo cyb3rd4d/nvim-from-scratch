@@ -23,5 +23,11 @@ return {
 				lsp_doc_border = false, -- add a border to hover docs and signature help
 			},
 		})
+
+		require("notify").setup({
+			top_down = false,
+			max_width = 50,
+			render = "wrapped-compact",
+		})
 	end,
 }
