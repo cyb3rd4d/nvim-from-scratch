@@ -166,3 +166,46 @@ wk.register({
 }, {
 	mode = "t",
 })
+
+local trouble = require("trouble")
+
+wk.register({
+	["<leader>xx"] = {
+		function()
+			trouble.toggle()
+		end,
+		"Toggle Trouble",
+	},
+	["<leader>xw"] = {
+		function()
+			trouble.toggle("workspace_diagnostics")
+		end,
+		"Toggle Trouble workspace diagnostics",
+	},
+	["<leader>xd"] = {
+		function()
+			trouble.toggle("document_diagnostics")
+		end,
+		"Toggle Trouble document diagnostics",
+	},
+	["<leader>xq"] = {
+		function()
+			trouble.toggle("quickfix")
+		end,
+		"Toggle Trouble quickfix",
+	},
+	["<leader>xl"] = {
+		function()
+			trouble.toggle("loclist")
+		end,
+		"Toggle Trouble location list",
+	},
+	["gR"] = {
+		function()
+			trouble.toggle("lsp_references")
+		end,
+		"Toggle Trouble LSP references",
+	},
+}, {
+	mode = "n",
+})
