@@ -10,3 +10,4 @@ opt.shiftwidth = 2
 opt.smartindent = true
 opt.splitbelow = true
 opt.splitright = true
+opt.scrolloff = 10
