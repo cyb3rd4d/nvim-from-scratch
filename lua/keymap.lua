@@ -138,19 +138,11 @@ wk.register({
 })
 
 -- Terminal
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
 wk.register({
 	["<A-v>"] = { "<cmd>ToggleTerm direction=vertical size=80<cr>", "Toggle vertical terminal" },
 	["<A-h>"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "Toggle horizontal terminal" },
 	["<A-f>"] = { "<cmd>ToggleTerm direction=float<cr>", "Toggle floating terminal" },
-	["<leader>gs"] = {
-		function()
-			lazygit:toggle(100, "float")
-		end,
-		"Toggle Lazygit",
-	},
+	["<leader>gs"] = { "<cmd>LazyGit<cr>", "Toggle Lazygit" },
 }, {
 	mode = "n",
 })
