@@ -8,7 +8,7 @@ return {
 		dependencies = {},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "gopls", "lua_ls", "bashls", "tsserver", "phpactor" },
+				ensure_installed = { "gopls", "lua_ls", "bashls", "tsserver", "phpactor", "rust_analyzer" },
 			})
 		end,
 	},
@@ -57,6 +57,11 @@ return {
 			})
 
 			lspconfig.phpactor.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+			})
+
+			lspconfig.rust_analyzer.setup({
 				handlers = handlers,
 				capabilities = capabilities,
 			})
