@@ -134,6 +134,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+-- Git
+wk.register({
+	["<leader>gs"] = { "<cmd>LazyGit<cr>", "Toggle Lazygit" },
+	["<leader>gg"] = { "<cmd>G<cr>", "Toggle Fugitive" },
+}, {
+	mode = "n",
+})
+
 -- File tree
 wk.register({
 	["<C-n>"] = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Open Neotree" },
@@ -144,7 +152,6 @@ wk.register({
 	["<A-v>"] = { "<cmd>ToggleTerm direction=vertical size=80<cr>", "Toggle vertical terminal" },
 	["<A-h>"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "Toggle horizontal terminal" },
 	["<A-f>"] = { "<cmd>ToggleTerm direction=float<cr>", "Toggle floating terminal" },
-	["<leader>gs"] = { "<cmd>LazyGit<cr>", "Toggle Lazygit" },
 }, {
 	mode = "n",
 })
