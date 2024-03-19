@@ -20,28 +20,37 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
-		end,
-	},
-	{
-		"leoluz/nvim-dap-go",
-		config = function()
-			require("dap-go").setup({
-				dap_configurations = {
-					{
-						type = "go",
-						name = "Attach remote",
-						mode = "remote",
-						request = "attach",
-						connect = {
-							host = "127.0.0.1",
-							port = "38697",
-						},
+
+			dap.adapters.go = function(callback, config)
+				local default_config = {
+					type = "server",
+					host = "127.0.0.1",
+					port = "${port}",
+					executable = {
+						command = "dlv",
+						args = { "dap", "-l", "127.0.0.1:${port}" },
 					},
-				},
-				delve = {
-					port = "38697",
-				},
-			})
+					options = {
+						initialize_timeout_sec = 20,
+					},
+				}
+
+				if config.mode ~= "remote" then
+					callback(default_config)
+					return
+				end
+
+				local listener_addr = config.host .. ":" .. config.port
+				default_config.port = config.port
+				default_config.executable.args = { "dap", "-l", listener_addr }
+
+				vim.notify("Dynamic remote Go adapter with listener address: " .. listener_addr, vim.log.levels.DEBUG)
+
+				callback(default_config)
+			end
+
+			local vscode = require("dap.ext.vscode")
+			vscode.load_launchjs()
 		end,
 	},
 }
