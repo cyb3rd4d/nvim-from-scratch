@@ -56,10 +56,10 @@ wk.register({
 	},
 	-- Debugger
 	db = { dap.toggle_breakpoint, "Toogle debug breakpoint" },
-	dl = { dap.run_last, "Run last debug session" },
 }, { prefix = "<leader>" })
 
 local dap_ui_widgets = require("dap.ui.widgets")
+-- local dap_go = require("dap-go")
 
 -- Debugger
 wk.register({
@@ -69,6 +69,8 @@ wk.register({
 	["<F10>"] = { dap.step_over, "Step over" },
 	["<F11>"] = { dap.step_into, "Step into" },
 	["<F12>"] = { dap.step_out, "Step out" },
+	-- ["<leader>dt"] = { dap_go.debug_test, "Debug Go test" },
+	-- ["<leader>dlt"] = { dap_go.debug_last_test, "Debug last Go test" },
 	["<leader>dh"] = { dap_ui_widgets.hover, "Evaluate in a floating window" },
 	["<leader>dp"] = { dap_ui_widgets.preview, "Evaluate in a buffer" },
 	["<leader>df"] = {
@@ -132,6 +134,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+-- Git
+wk.register({
+	["<leader>gs"] = { "<cmd>LazyGit<cr>", "Toggle Lazygit" },
+	["<leader>gg"] = { "<cmd>G<cr>", "Toggle Fugitive" },
+}, {
+	mode = "n",
+})
+
 -- File tree
 wk.register({
 	["<C-n>"] = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Open Neotree" },
@@ -142,7 +152,6 @@ wk.register({
 	["<A-v>"] = { "<cmd>ToggleTerm direction=vertical size=80<cr>", "Toggle vertical terminal" },
 	["<A-h>"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "Toggle horizontal terminal" },
 	["<A-f>"] = { "<cmd>ToggleTerm direction=float<cr>", "Toggle floating terminal" },
-	["<leader>gs"] = { "<cmd>LazyGit<cr>", "Toggle Lazygit" },
 }, {
 	mode = "n",
 })
