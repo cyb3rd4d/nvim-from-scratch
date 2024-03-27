@@ -1,10 +1,10 @@
 local wk = require("which-key")
 
 wk.register({
-	["<C-h>"] = { "<C-w>h", "Go to the left window" },
-	["<C-l>"] = { "<C-w>l", "Go to the right window" },
-	["<C-j>"] = { "<C-w>j", "Go to the top window" },
-	["<C-k>"] = { "<C-w>k", "Go to the bottom window" },
+	["<C-h>"] = { "<cmd>TmuxNavigateLeft<cr>", "Go to the left window" },
+	["<C-l>"] = { "<cmd>TmuxNavigateRight<cr>", "Go to the right window" },
+	["<C-j>"] = { "<cmd>TmuxNavigateUp<cr>", "Go to the top window" },
+	["<C-k>"] = { "<cmd>TmuxNavigateDown<cr>", "Go to the bottom window" },
 	["<C-x>"] = { "<cmd>bdelete<cr>", "Close the current buffer" },
 }, {
 	mode = "n",
