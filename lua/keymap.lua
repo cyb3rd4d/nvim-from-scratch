@@ -59,12 +59,14 @@ wk.register({
 }, { prefix = "<leader>" })
 
 local dap_ui_widgets = require("dap.ui.widgets")
+local dapui = require("dapui")
 -- local dap_go = require("dap-go")
 
 -- Debugger
 wk.register({
 	["<F5>"] = { dap.continue, "Start debugging" },
 	["<F6>"] = { dap.terminate, "Stop debugging" },
+	["<F7>"] = { dapui.close, "Stop debugging" },
 	["<F9>"] = { dap.step_back, "Step back" },
 	["<F10>"] = { dap.step_over, "Step over" },
 	["<F11>"] = { dap.step_into, "Step into" },
