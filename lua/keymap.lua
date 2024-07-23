@@ -3,8 +3,8 @@ local wk = require("which-key")
 wk.add({
   { "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  desc = "Go to the left window" },
   { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Go to the right window" },
-  { "<C-j>", "<cmd>TmuxNavigateUp<cr>",    desc = "Go to the top window" },
-  { "<C-k>", "<cmd>TmuxNavigateDown<cr>",  desc = "Go to the bottom window" },
+  { "<C-k>", "<cmd>TmuxNavigateUp<cr>",    desc = "Go to the top window" },
+  { "<C-j>", "<cmd>TmuxNavigateDown<cr>",  desc = "Go to the bottom window" },
   { "<C-x>", "<cmd>bdelete<cr>",           desc = "Close the current buffer" },
 })
 
@@ -13,8 +13,8 @@ wk.add({
     mode = "i",
     { "<C-h>", "<Left>",  desc = "Move the cursor on the left" },
     { "<C-l>", "<Right>", desc = "Move the cursor on the right" },
-    { "<C-k>", "<Up>",    desc = "Move the cursor above" },
-    { "<C-j>", "<Down>",  desc = "Move the cursor below" },
+    { "<C-j>", "<Up>",    desc = "Move the cursor above" },
+    { "<C-k>", "<Down>",  desc = "Move the cursor below" },
   },
 })
 
