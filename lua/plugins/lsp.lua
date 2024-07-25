@@ -8,7 +8,15 @@ return {
     dependencies = {},
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "gopls", "lua_ls", "bashls", "tsserver", "rust_analyzer" },
+        ensure_installed = {
+          "docker_compose_language_service",
+          "dockerls",
+          "gopls",
+          "lua_ls",
+          "bashls",
+          "tsserver",
+          "rust_analyzer",
+        },
       })
     end,
   },
@@ -45,6 +53,16 @@ return {
             },
           },
         },
+      })
+
+      lspconfig.docker_compose_language_service.setup({
+        handlers = handlers,
+        capabilities = capabilities,
+      })
+
+      lspconfig.dockerls.setup({
+        handlers = handlers,
+        capabilities = capabilities,
       })
 
       lspconfig.gopls.setup({

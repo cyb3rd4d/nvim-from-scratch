@@ -19,6 +19,7 @@ return {
         "json",
         "graphql",
         "http",
+        "dockerfile",
       },
       ignore_install = {},
       modules = {},
