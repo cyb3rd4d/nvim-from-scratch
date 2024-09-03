@@ -20,6 +20,8 @@ return {
         "graphql",
         "http",
         "dockerfile",
+        "groovy",
+        "rust",
       },
       ignore_install = {},
       modules = {},
