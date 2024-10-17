@@ -9,11 +9,12 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
+          "bashls",
           "docker_compose_language_service",
           "dockerls",
           "gopls",
           "lua_ls",
-          "bashls",
+          "terraformls",
           "tsserver",
           "rust_analyzer",
         },
@@ -81,6 +82,11 @@ return {
       })
 
       lspconfig.rust_analyzer.setup({
+        handlers = handlers,
+        capabilities = capabilities,
+      })
+
+      lspconfig.terraformls.setup({
         handlers = handlers,
         capabilities = capabilities,
       })
