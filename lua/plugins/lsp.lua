@@ -15,7 +15,7 @@ return {
           "gopls",
           "lua_ls",
           "terraformls",
-          "tsserver",
+          "ts_ls",
           "rust_analyzer",
         },
       })
@@ -76,7 +76,7 @@ return {
         capabilities = capabilities,
       })
 
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         handlers = handlers,
         capabilities = capabilities,
       })
