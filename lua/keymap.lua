@@ -13,8 +13,8 @@ wk.add({
     mode = "i",
     { "<C-h>", "<Left>",  desc = "Move the cursor on the left" },
     { "<C-l>", "<Right>", desc = "Move the cursor on the right" },
-    { "<C-j>", "<Up>",    desc = "Move the cursor above" },
-    { "<C-k>", "<Down>",  desc = "Move the cursor below" },
+    { "<C-k>", "<Up>",    desc = "Move the cursor above" },
+    { "<C-j>", "<Down>",  desc = "Move the cursor below" },
   },
 })
 
