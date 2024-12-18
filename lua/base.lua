@@ -12,6 +12,8 @@ opt.splitbelow = true
 opt.splitright = true
 opt.scrolloff = 10
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false
+
+opt.clipboard = "unnamedplus"
