@@ -8,15 +8,15 @@ wk.add({
   { "<C-x>", "<cmd>bdelete<cr>",           desc = "Close the current buffer" },
 })
 
-wk.add({
-  {
-    mode = "i",
-    { "<C-h>", "<Left>",  desc = "Move the cursor on the left" },
-    { "<C-l>", "<Right>", desc = "Move the cursor on the right" },
-    { "<C-k>", "<Up>",    desc = "Move the cursor above" },
-    { "<C-j>", "<Down>",  desc = "Move the cursor below" },
-  },
-})
+-- wk.add({
+--   {
+--     mode = "i",
+--     { "<C-h>", "<Left>",  desc = "Move the cursor on the left" },
+--     { "<C-l>", "<Right>", desc = "Move the cursor on the right" },
+--     { "<C-k>", "<Up>",    desc = "Move the cursor above" },
+--     { "<C-j>", "<Down>",  desc = "Move the cursor below" },
+--   },
+-- })
 
 local telescope_builtin = require("telescope.builtin")
 local dap = require("dap")
