@@ -24,10 +24,34 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      { "saghen/blink.cmp" },
       { "folke/neodev.nvim",   opts = {} },
     },
-    config = function()
+    opts = {
+      servers = {
+        lua_ls = {
+          handlers = {
+            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+          },
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = "Replace",
+              },
+            },
+          },
+        },
+        docker_compose_language_service = {},
+        dockerls = {},
+        gopls = {},
+        bashls = {},
+        ts_ls = {},
+        rust_analyzer = {},
+        terraformls = {},
+      },
+    },
+    config = function(_, opts)
       require("neodev").setup({
         library = {
           plugins = { "nvim-dap-ui" },
@@ -35,61 +59,11 @@ return {
         },
       })
 
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      local lsp = vim.lsp
-
-      local handlers = {
-        ["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" }),
-        ["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" }),
-      }
-
-      lspconfig.lua_ls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
-
-      lspconfig.docker_compose_language_service.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.dockerls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.gopls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.bashls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.ts_ls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.rust_analyzer.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-
-      lspconfig.terraformls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
+      for server, config in pairs(opts.servers) do
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
     end,
   },
 }
